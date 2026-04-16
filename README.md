@@ -1,5 +1,5 @@
 # AmarilisNails
-# KMP PROJECT
+## KMP PROJECT
 
 AmarilisNails es una aplicación multiplataforma desarrollada con Kotlin Multiplatform para la gestión diaria de un negocio de manicura.
 
