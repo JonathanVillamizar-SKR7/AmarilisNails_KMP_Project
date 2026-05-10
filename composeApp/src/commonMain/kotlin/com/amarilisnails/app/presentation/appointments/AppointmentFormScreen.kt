@@ -3,6 +3,7 @@ package com.amarilisnails.app.presentation.appointments
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -46,29 +47,47 @@ fun AppointmentFormScreen(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
             .padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
+
+        Text(
+            text = "< Volver",
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable {
+                onBackClick()
+            }
+        )
         Text(
             text = "Nueva cita",
             style = MaterialTheme.typography.headlineLarge,
             color = MaterialTheme.colorScheme.primary
         )
 
-        OutlinedTextField(
-            value = formatDate(selectedDate),
-            onValueChange = {},
-            readOnly = true,
-            label = { Text("Fecha") },
-            modifier = Modifier.fillMaxWidth().clickable { showDatePicker = true },
-            enabled = true
-        )
+        Box(modifier = Modifier.fillMaxWidth()) {
+            OutlinedTextField(
+                value = formatDate(selectedDate),
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Fecha") },
+                modifier = Modifier.fillMaxWidth(),
+                enabled = true
+            )
 
-        OutlinedTextField(
-            value = formatTime(selectedTime),
-            onValueChange = {},
-            readOnly = true,
-            label = { Text("Hora") },
-            modifier = Modifier.fillMaxWidth().clickable { showTimePicker = true },
-            enabled = true
-        )
+            Box(
+                modifier = Modifier.matchParentSize().clickable { showDatePicker = true })
+        }
+
+        Box(modifier = Modifier.fillMaxWidth()) {
+            OutlinedTextField(
+                value = formatTime(selectedTime),
+                onValueChange = {},
+                readOnly = true,
+                label = { Text("Hora") },
+                modifier = Modifier.fillMaxWidth(),
+                enabled = true
+            )
+
+            Box(
+                modifier = Modifier.matchParentSize().clickable { showTimePicker = true })
+        }
 
         OutlinedTextField(
             value = notes,
