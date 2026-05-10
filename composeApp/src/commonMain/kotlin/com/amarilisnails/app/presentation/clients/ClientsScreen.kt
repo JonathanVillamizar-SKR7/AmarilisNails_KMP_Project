@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ClientsScreen(
-    viewModel: ClientsViewModel, onAddClientClick: () -> Unit, onClientClick: (String) -> Unit
+    viewModel: ClientsViewModel, onAddClientClick: () -> Unit, onClientClick: (String) -> Unit, onBackClick: () -> Unit
 ) {
     val clients by viewModel.clients.collectAsState()
     var searchText by remember { mutableStateOf("") }
@@ -28,6 +28,14 @@ fun ClientsScreen(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
             .padding(20.dp)
     ) {
+        Text(
+            text = "< Volver",
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable {
+                onBackClick()
+            }
+        )
+
         Row(
             modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
         ) {

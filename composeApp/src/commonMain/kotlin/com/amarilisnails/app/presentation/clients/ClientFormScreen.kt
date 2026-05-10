@@ -1,6 +1,7 @@
 package com.amarilisnails.app.presentation.clients
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -36,6 +37,14 @@ fun ClientFormScreen(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
             .padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
+        Text(
+            text = "< Volver",
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable {
+                onBackClick()
+            }
+        )
+
         Text(
             text = "Nueva clienta",
             style = MaterialTheme.typography.headlineLarge,
