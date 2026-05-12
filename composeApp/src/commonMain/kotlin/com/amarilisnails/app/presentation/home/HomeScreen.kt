@@ -19,7 +19,7 @@ fun HomeScreen(
     onClientsClick: () -> Unit,
     onAppointmentsClick: () -> Unit,
     onServicesClick: () -> Unit,
-    onSummaryClick: () -> Unit
+    onSummaryClick: () -> Unit,
 ) {
     Column(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
@@ -91,6 +91,7 @@ fun HomeScreen(
             title = "Resumen mensual", onClick = onSummaryClick
         )
     }
+
 }
 
 @Composable

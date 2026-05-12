@@ -15,7 +15,7 @@ import com.amarilisnails.app.domain.model.Service
 
 @Composable
 fun ServicesScreen(
-    viewModel: ServicesViewModel, onBackClick: () -> Unit
+    viewModel: ServicesViewModel, onBackClick: () -> Unit, onAddServiceClick: () -> Unit
 ) {
     val services by viewModel.services.collectAsState()
 
@@ -41,7 +41,8 @@ fun ServicesScreen(
             Text(
                 text = "+",
                 style = MaterialTheme.typography.headlineLarge,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.clickable { onAddServiceClick() }
             )
         }
 
