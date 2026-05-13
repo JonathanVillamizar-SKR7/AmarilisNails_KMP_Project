@@ -120,8 +120,10 @@ fun NavigationWrapper() {
                 if (selectedClientId != null) {
                     AppointmentFormScreen(
                         clientId = selectedClientId!!,
-                        viewModel = appointmentsViewModel,
-                        onBackClick = { currentScreen = "client_detail" })
+                        appointmentsViewModel = appointmentsViewModel,
+                        servicesViewModel = servicesViewModel,
+                        onBackClick = { currentScreen = "client_detail" }
+                    )
                 }
             }
 

@@ -47,7 +47,7 @@ fun TodayAppointmentsScreen(
     val allAppointments by appointmentsViewModel.appointments.collectAsState()
     val clients by clientsViewModel.clients.collectAsState()
 
-    var selectedDate by remember { mutableStateOf(LocalDate(2026, 5, 5)) }
+    var selectedDate by remember { mutableStateOf(LocalDate(2026, 5, 14)) }
 
     val dayAppointments = allAppointments.filter { it.date == selectedDate }.sortedBy { it.time }
 
@@ -153,13 +153,23 @@ private fun TodayAppointmentItem(
                 }
 
                 Text(
-                    text = appointment.status.name,
+                    text = if (appointment.paymentStatus.name == "PAID") "Pagado" else "Pendiente",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.primary
+                )
+
+                Text(
+                    text = "Total: ${formatPrice(appointment.total)}",
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }
     }
+}
+
+private fun formatPrice(price: Double): String {
+    val rounded = (price * 100).toInt() / 100.0
+    return "$rounded €".replace(".", ",")
 }
 
 @Composable
