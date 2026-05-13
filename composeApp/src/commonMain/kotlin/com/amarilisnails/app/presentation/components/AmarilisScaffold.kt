@@ -27,7 +27,9 @@ fun AmarilisScaffold(
         Box(
             modifier = Modifier.fillMaxSize().padding(bottom = 90.dp)
         ) {
-            content()
+            ResponsiveContent {
+                content()
+            }
         }
 
         Box(
